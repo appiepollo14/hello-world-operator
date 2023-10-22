@@ -9,7 +9,6 @@ import java.util.Map;
 
 import static io.javaoperatorsdk.operator.api.reconciler.Constants.WATCH_CURRENT_NAMESPACE;
 
-//@Log
 @ControllerConfiguration(namespaces = WATCH_CURRENT_NAMESPACE, name = "helloworld", dependents = {
         @Dependent(type = ServiceDependent.class),
         @Dependent(type = DeploymentDependent.class)

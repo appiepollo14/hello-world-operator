@@ -28,10 +28,11 @@ public class DeploymentDependent extends CRUDKubernetesDependentResource<Deploym
         final var spec = helloWorld.getSpec();
         final var imageRef = spec.getImage();
         final var env = spec.getEnv();
+        final var replicas = spec.getReplicas();
 
         var containerBuilder = new DeploymentBuilder()
                 .withMetadata(createMetadata(helloWorld, labels))
-                .withNewSpec()
+                .withNewSpec().withReplicas(replicas)
                 .withNewSelector().withMatchLabels(labels).endSelector()
                 .withNewTemplate()
                 .withNewMetadata().withLabels(labels).endMetadata()
